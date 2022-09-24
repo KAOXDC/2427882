@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .forms import contact_form
+from django.shortcuts import render, redirect
+from .forms import contact_form, agregar_producto_form
+from .models import *
 
 # Create your views here.
 def vista_inicio(request):
@@ -27,3 +28,20 @@ def vista_contact (request):
         form = contact_form()
 
     return render(request, 'contact.html', locals())
+
+def vista_agregar_producto(request):
+    
+    if request.method == 'POST':
+        formulario = agregar_producto_form(request.POST, request.FILES)
+        if formulario.is_valid():
+            formulario.save() # INSERT INTO 'home_producto'  ....
+            return redirect ('/')
+    else: # GET
+        formulario = agregar_producto_form()
+    return render(request, 'producto_agregar.html', locals())
+
+
+def vista_listar_productos(request):
+    lista = Producto.objects.filter()
+
+    return render(request, 'listar_productos.html', locals())

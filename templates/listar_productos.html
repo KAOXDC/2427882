@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block titulo %}
+    <title>
+
+        listar productos    
+    </title>
+{% endblock titulo %}
+
+{% block contenido %}
+    <table>
+        <thead>
+            <th>Id</th>
+            <th>nombre</th>
+            <th>foto</th>
+            <th>acciones</th>
+        </thead>
+
+        <tbody>
+            {% for producto in lista %}
+            
+            <tr>
+                <td>{{ producto.id }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td><img src="/media/{{ producto.foto }}" alt="" height="50px"></td>
+                <td><a href="">ver</a></td>
+                <td><a href="">editar</a></td>
+                <td><a href="">eliminar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        
+{% endblock contenido %}
+    

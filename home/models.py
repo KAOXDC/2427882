@@ -17,7 +17,7 @@ class Producto (models.Model):
 	precio 	= models.IntegerField()
 	stock 	= models.IntegerField()
 	status 	= models.BooleanField(default=True)
-	#foto 	= models.ImageField(upload_to='fotos', null=True, blank=True)
+	foto 	= models.ImageField(upload_to='productos', null=True, blank=True)
 	marca 	= models.ForeignKey(Marca, on_delete=models.PROTECT)
 	categoria = models.ManyToManyField(Categoria, null=True, blank=True)
 
